@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html ng-app="store">
+<html>
 	<head>
 		<meta charset="utf-8">
-		<title>Mi Primer Angularjs</title>
+		<title>Freaky Angular News</title>
+		<script type="text/javascript" src="angular/angular.min.js"></script>
+        <script type="text/javascript" src="stories/Stories.js"></script>
+		<script type="text/javascript" src="Main.js"></script>
 	</head>
-	<body>
-		<p>AngularJS fue creado por  hace solo {{2014-2009}} años {{"hello" + " you"}}</p>
-		<script type="text/javascript" src="angular.min.js"></script>
-		<script type="text/javascript" src="app.js"></script>
+	<body ng-app="Main" ng-controller="MainCtrl">
+        <header>
+
+        </header>
+        <div>
+            <section ui-view></section>
+        </div>
+        <footer>FreakyNews 2015 (R).</footer>
 	</body>
 </html>
