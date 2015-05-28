@@ -3,18 +3,19 @@
  */
 
 angular.module('Stories',[])
-    .controller('StoriesCtrl', [,function(){
-        StoriesService.query().then(function(response){
-           this.movies = response.data;
+    .factory('StoriesService', ['$http', function ($http) {
+        return {
+            getStories: function () {
+                return $http.get('https://freakynews-ericguti90.c9.io/stories.json');   //@todo donde coloco el nombre del dominio?
+            }
+        };
+    }])
+    .controller('StoriesCtrl', ['StoriesService', function(StoriesService){
+        var self = this;
+        StoriesService.getStories().then(function(response){
+            self.stories = response.data;
         }, function(errResponse){
             console.log("Error");
             console.log(errResponse);
         });
-    }])
-    .factory('StoriesService', ['$http', function ($http) {
-        return {
-            query: function () {
-                return $http.get('/stories');   //@todo donde coloco el nombre del dominio?
-            }
-        };
     }]);

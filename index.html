@@ -5,12 +5,12 @@
 		<title>Freaky Angular News</title>
 		<script type="text/javascript" src="angular/angular.js"></script>
         <script type="text/javascript" src="angular/angular-ui-router.js"></script>
-       <!-- <script type="text/javascript" src="stories/Stories.js"></script>-->
+        <script type="text/javascript" src="stories/Stories.js"></script>
 		<script type="text/javascript" src="Main.js"></script>
 	</head>
-	<body ng-app="Main" ng-controller="MainCtrl">
+	<body ng-app="Main" ng-controller="MainCtrl as Mc">
         <header>
-
+            {{Mc.link}}
         </header>
         <div>
             <section ui-view></section>
