@@ -3,14 +3,14 @@
  */
 
 angular.module('Stories',[])
-    .controller('StoriesCtrl', function(){
+    .controller('StoriesCtrl', [,function(){
         StoriesService.query().then(function(response){
            this.movies = response.data;
         }, function(errResponse){
             console.log("Error");
             console.log(errResponse);
         });
-    })
+    }])
     .factory('StoriesService', ['$http', function ($http) {
         return {
             query: function () {
