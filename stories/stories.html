@@ -1,7 +1,7 @@
-<div id="stories">
-    <article ng-repeat="story in StoriesC.stories" data-id="{{story.id}}">
+<ul class="list-group" id="stories">
+    <li class="list-group-item" ng-repeat="story in StoriesC.stories" data-id="{{story.id}}">
         <h4>{{story.text}}</h4>
         <a href="{{story.link}}">{{story.link}}</a>
         <p>Made by user {{story.User_id}}, {{story.likes}} likes.</p>
-    </article>
-</div>
+    </li>
+</ul>

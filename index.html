@@ -3,18 +3,28 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Freaky Angular News</title>
+        <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
 		<script type="text/javascript" src="angular/angular.js"></script>
         <script type="text/javascript" src="angular/angular-ui-router.js"></script>
+        <script type="text/javascript" src="Config.js"></script>
         <script type="text/javascript" src="stories/Stories.js"></script>
 		<script type="text/javascript" src="Main.js"></script>
 	</head>
 	<body ng-app="Main" ng-controller="MainCtrl as Mc">
-        <header>
-            {{Mc.link}}
-        </header>
-        <div>
-            <section ui-view></section>
+        <div class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">FreakyNews</a>
+                </div>
+                <div class=" navbar-collapse" id="mynavbar-content">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="#"> {{Mc.link}}</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
+        <section ui-view></section>
         <footer>FreakyNews 2015 (R).</footer>
 	</body>
 </html>

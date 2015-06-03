@@ -2,11 +2,11 @@
  * Created by Xavier on 27/5/2015.
  */
 
-angular.module('Stories',[])
-    .factory('StoriesService', ['$http', function ($http) {
+angular.module('Stories',['Config'])
+    .factory('StoriesService', ['$http', 'config', function ($http, config) {
         return {
             getStories: function () {
-                return $http.get('https://freakynews-ericguti90.c9.io/stories.json');   //@todo donde coloco el nombre del dominio?
+                return $http.get(config.origin + '/stories');
             }
         };
     }])
@@ -18,4 +18,8 @@ angular.module('Stories',[])
             console.log("Error");
             console.log(errResponse);
         });
+    }])
+    .config(['$httpProvider', function($httpProvider){
+        $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'; //We ask for JSON by default
+        $httpProvider.defaults.headers.common['Accept'] = 'application/json'; //We ask for JSON by default
     }]);
