@@ -14,17 +14,18 @@
         <div class="navbar navbar-default">
             <div class="container-fluid">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="#">FreakyNews</a>
+                    <a class="navbar-brand" ui-sref="stories">FreakyNews</a>
                 </div>
                 <div class=" navbar-collapse" id="mynavbar-content">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
                         <li><a href="#"> {{Mc.link}}</a></li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div>
         <section ui-view></section>
+            </div>
         <footer>FreakyNews 2015 (R).</footer>
 	</body>
 </html>

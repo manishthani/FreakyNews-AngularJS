@@ -3,7 +3,11 @@
  */
 angular.module('Main',['ui.router', 'Stories'] ).config(
   function($urlRouterProvider,$stateProvider){
-      $stateProvider.state('stories',{
+      $stateProvider.state('story',{
+          url:'/stories/:id',
+          templateUrl:'stories/story.html',
+          controller:'StoryCtrl as StoryC'
+      }).state('stories',{
           url:'/stories',
           templateUrl:'stories/stories.html',
           controller:'StoriesCtrl as StoriesC'

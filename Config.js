@@ -3,5 +3,6 @@
  */
 angular.module('Config', [])
     .constant('config', {
-        origin: 'https://freakynews-ericguti90.c9.io'
+        origin: 'https://freakynews-ericguti90.c9.io',
+        backendFolder: '/FreakyNews-AngularJS'
     });

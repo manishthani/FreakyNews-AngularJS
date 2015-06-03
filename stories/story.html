@@ -1,0 +1,17 @@
+<article class="story">
+    <article class="well row">
+        <div class="col-xs-9">
+            <h3>{{StoryC.story.text}}</h3>
+            <div><a href="{{StoryC.story.link}}">{{StoryC.story.link}}</a></div>
+            <div><em>Made by {{StoryC.story.User_id}} at {{StoryC.story.updated_at}}</em></div>
+        </div>
+        <div class="col-xs-3">
+            <a href="#" class="liker btn btn-primary btn-lg">Like it<span class="badge">{{StoryC.story.likes}}</span></a>
+        </div>
+    </article>
+    <ul class="list-group">
+        <li class="list-group-item" ng-repeat="comment in StoryC.story.comments">
+            <div id="hi" ng-include="StoryC.commentsHtml"></div>
+        </li>
+    </ul>
+</article>

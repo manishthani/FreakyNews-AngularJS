@@ -7,6 +7,9 @@ angular.module('Stories',['Config'])
         return {
             getStories: function () {
                 return $http.get(config.origin + '/stories');
+            },
+            getStory: function(id){
+                return $http.get(config.origin + '/stories/' + id);
             }
         };
     }])
@@ -15,11 +18,19 @@ angular.module('Stories',['Config'])
         StoriesService.getStories().then(function(response){
             self.stories = response.data;
         }, function(errResponse){
-            console.log("Error");
-            console.log(errResponse);
+            alert("Error Stories:"+errResponse);
+        });
+    }])
+    .controller('StoryCtrl', ['StoriesService','$stateParams','config', function(StoriesService,$stateParams,config){
+        var self = this;
+        StoriesService.getStory($stateParams.id).then(function(response){
+           self.story = response.data;
+            self.commentsHtml = config.backendFolder + '/comments/comments.html';
+        }, function(errResponse){
+            alert("Error Story: "+errResponse);
         });
     }])
     .config(['$httpProvider', function($httpProvider){
-        $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'; //We ask for JSON by default
+        $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'; //We send JSON by default
         $httpProvider.defaults.headers.common['Accept'] = 'application/json'; //We ask for JSON by default
     }]);
