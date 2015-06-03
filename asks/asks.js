@@ -25,13 +25,11 @@ angular.module('Asks',['Config'])
             self.asks = response.data;
         }, function(errResponse){
             alert("Error Asks:"+errResponse);
-        });
-<<<<<<< HEAD
+        });/*
         AsksService.postAsk(user).then(function(response){
         }, function(errResponse){
             alert("Error Asks:"+errResponse);
-        });
-=======
+        });*/
         //fijaros en la diferencia entre gets y el post. El de getAsks() lo estoy ejecutando
         //El post lo estoy definiendo, pero no lo ejecuto, ya que solo quiero que se ejecute
         //no cuando se cargue la página, sino cuando yo haga algo que llame a AsksCtrl.post()
@@ -42,7 +40,6 @@ angular.module('Asks',['Config'])
                 alert("Error Asks:" + errResponse);
             });
         }
->>>>>>> ea05e6f4686c922bef6eda67845fef47ff166cec
     }])
     .controller('AskCtrl', ['AsksService','$stateParams','config', function(AsksService,$stateParams,config){
         var self = this;
@@ -53,10 +50,7 @@ angular.module('Asks',['Config'])
             alert("Error Ask: "+errResponse);
         });
     }])
-<<<<<<< HEAD
 
-=======
->>>>>>> ea05e6f4686c922bef6eda67845fef47ff166cec
     .config(['$httpProvider', function($httpProvider){
         $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'; //We send JSON by default
         $httpProvider.defaults.headers.common['Accept'] = 'application/json'; //We ask for JSON by default
