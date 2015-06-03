@@ -1,0 +1,24 @@
+
+<form class="form">
+    <div class="form-group">
+        <label for="User_id">User Id</label>
+        <input class="form-control" id="User_id" type="text" ng-model="CmntC.User_id"/>
+    </div>
+    <div class="form-group">
+        <label for="text">Text</label>
+        <input class="form-control" type="text" id="text" ng-model="CmntC.text"/>
+    </div>
+    <div class="form-group">
+        <label for="Ask_id">Ask_id</label>
+        <input class="form-control" type="text" id="Ask_id" ng-model="CmntC.Ask_id"/>
+    </div>
+    <div class="form-group">
+        <label for="Story_id">Story_id</label>
+        <input class="form-control" type="text" id="Story_id" ng-model="CmntC.Story_id"/>
+    </div>
+    <div class="form-group">
+        <label for="parent_id">parent_id</label>
+        <input class="form-control" type="text" id="parent_id" ng-model="CmntC.parent_id"/>
+    </div>
+    <input class="btn btn-primary" type="submit" value="Enviar" ng-click="CmntC.post()">
+</form>

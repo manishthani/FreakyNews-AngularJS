@@ -1,7 +1,7 @@
 /**
  * Created by Xavier on 27/5/2015.
  */
-angular.module('Main',['ui.router', 'Stories', 'Asks'] ).config(
+angular.module('Main',['ui.router', 'Stories', 'Asks', 'Comments'] ).config(
   function($urlRouterProvider,$stateProvider){
       $stateProvider.state('story',{
           url:'/stories/:id',
@@ -19,7 +19,12 @@ angular.module('Main',['ui.router', 'Stories', 'Asks'] ).config(
           url:'/asks',
           templateUrl:'asks/asks.html',
           controller:'AsksCtrl as AsksC'
+      }).state('newComment',{
+          url:'/comments/new?parent_id&Ask_id&Story_id',
+          templateUrl:'comments/form.html',
+          controller:'CommentsCtrl as CmntC'
       })
+
       ;
       $urlRouterProvider.otherwise("/stories")
       }
@@ -33,7 +38,7 @@ angular.module('Main',['ui.router', 'Stories', 'Asks'] ).config(
     }])
     .controller('MainCtrl',['MainService', function(MainService){
         var self = this;
-        self.link = "link bonito";
+        self.link = "Asks";
         self.like = function(type, id){
             MainService.like(type,id).then(function(response){
                 alert('You have successfully voted. Reload the page to see the vote.');

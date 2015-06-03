@@ -1,7 +1,13 @@
 <div class="row">
     <div class="col-xs-9">
         <h4>{{comment.name}}</h4>
-        <a href="#">Reply</a>
+        <a  ui-sref="newComment(
+            {
+                parent_id:comment.id,
+                Ask_id:(typeof(AskC) !== 'undefined'? AskC.ask.id : ''),
+                Story_id:(typeof(StoryC) !== 'undefined'? StoryC.story.id : '')
+            }
+        )">Reply</a>
     </div>
     <div class="col-xs-3">
         <button ng-click="Mc.like('comments',comment.id)" href="#" class="liker btn btn-primary btn-lg">Like it<span class="badge">{{comment.likes}}</span></button>

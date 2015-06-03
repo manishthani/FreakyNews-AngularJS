@@ -5,12 +5,16 @@
         <p>Made by user {{ask.User_id}}, {{ask.likes}} likes.</p>
     </li>
 
-    <form method="POST">
-        <input type="text" ng-model="user.User_id">
-        <br>
-        <input type="text" ng-model="user.text">
-        <br>
-        <input type="submit" value="Enviar" ng-click="AsksC.postAsk(user)">
+    <form class="form">
+        <div class="form-group">
+            <label for="uid">User Id</label>
+            <input class="form-control" id="uid" type="text" ng-model="AsksC.User_id"/>
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input class="form-control" type="text" id="text" ng-model="AsksC.text"/>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Enviar" ng-click="AsksC.post()">
     </form>
 
 

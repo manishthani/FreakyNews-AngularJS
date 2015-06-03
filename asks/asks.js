@@ -8,13 +8,8 @@ angular.module('Asks',['Config'])
             getAsk: function(id){
                 return $http.get(config.origin + '/asks/' + id);
             },
-            postAsk: function(user){
-                var data = {
-                    User_id: user.User_id,
-                    text: user.text
-                };
-
-                return $http.post(config.origin + '/asks/',data);
+            postAsk: function(text, User_id){
+                return $http.post(config.origin + '/asks',{text: text, User_id:User_id});
             }
         };
     }])
@@ -25,16 +20,9 @@ angular.module('Asks',['Config'])
             self.asks = response.data;
         }, function(errResponse){
             alert("Error Asks:"+errResponse);
-        });/*
-        AsksService.postAsk(user).then(function(response){
-        }, function(errResponse){
-            alert("Error Asks:"+errResponse);
-        });*/
-        //fijaros en la diferencia entre gets y el post. El de getAsks() lo estoy ejecutando
-        //El post lo estoy definiendo, pero no lo ejecuto, ya que solo quiero que se ejecute
-        //no cuando se cargue la página, sino cuando yo haga algo que llame a AsksCtrl.post()
-        self.post = function() {    //Recordad ponerle parámetros
-            AsksService.postAsk({text: 'Soy un ask'}).then(function (response) {
+        });
+        self.post = function() {
+            AsksService.postAsk(self.text, self.User_id).then(function (response) {
                 self.asks = response.data;
             }, function (errResponse) {
                 alert("Error Asks:" + errResponse);
