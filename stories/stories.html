@@ -4,5 +4,19 @@
         <a href="{{story.link}}">{{story.link}}</a>
         <p>Made by user {{story.User_id}}, {{story.likes}} likes.</p>
     </li>
-
+    <form class="form">
+        <div class="form-group">
+            <label for="uid">User Id</label>
+            <input class="form-control" id="uid" type="text" ng-model="StoriesC.User_id"/>
+        </div>
+        <div class="form-group">
+            <label for="text">Text</label>
+            <input class="form-control" type="text" id="text" ng-model="StoriesC.text"/>
+        </div>
+        <div class="form-group">
+            <label for="text">Link</label>
+            <input class="form-control" type="text" id="link" ng-model="StoriesC.link"/>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Enviar" ng-click="StoriesC.post()">
+    </form>
 </ul>

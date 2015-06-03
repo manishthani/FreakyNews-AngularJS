@@ -10,6 +10,9 @@ angular.module('Stories',['Config'])
             },
             getStory: function(id){
                 return $http.get(config.origin + '/stories/' + id);
+            },
+            postStory: function(text,link,User_id){
+                return $http.post(config.origin + '/stories',{text: text, link: link, User_id:User_id});
             }
         };
     }])
@@ -20,6 +23,13 @@ angular.module('Stories',['Config'])
         }, function(errResponse){
             alert("Error Stories:"+errResponse);
         });
+        self.post = function() {
+            StoriesService.postStory(self.text,self.link,self.User_id).then(function (response) {
+                self.stories = response.data;
+            }, function (errResponse) {
+                alert("Error Stories:" + errResponse);
+            });
+        }
     }])
     .controller('StoryCtrl', ['StoriesService','$stateParams','config', function(StoriesService,$stateParams,config){
         var self = this;
