@@ -13,6 +13,9 @@ angular.module('Stories',['Config'])
             },
             postStory: function(text,link,User_id){
                 return $http.post(config.origin + '/stories',{text: text, link: link, User_id:User_id});
+            },
+            like: function (type,id){
+                return $http.post(config.origin + '/' + type + '/' + id + '/votes', {});
             }
         };
     }])
@@ -39,6 +42,14 @@ angular.module('Stories',['Config'])
         }, function(errResponse){
             alert("Error Story: "+errResponse);
         });
+        self.like = function(type,id){
+            StoriesService.like(type,id).then(function(response){
+                alert('You have successfully voted. Reload the page to see the vote.');
+            }, function(errResponse){
+                if(errResponse.status == 403) alert('You cannot vote as you have already done it.');
+                else alert('You cannot vote:' + errResponse.data);
+            })
+        };
     }])
     .config(['$httpProvider', function($httpProvider){
         $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'; //We send JSON by default

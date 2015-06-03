@@ -10,10 +10,13 @@ angular.module('Asks',['Config'])
             },
             postAsk: function(text, User_id){
                 return $http.post(config.origin + '/asks',{text: text, User_id:User_id});
+            },
+            like: function(type,id){
+                return $http.post(config.origin + '/' + type + '/' + id + '/votes', {});
             }
         };
     }])
-    //Usabais dos controladores con el mismo nombre, así que uno reemplazaba el otro
+    //Usabais dos controladores con el mismo nombre, asï¿½ que uno reemplazaba el otro
     .controller('AsksCtrl', ['AsksService', function(AsksService){
         var self = this;
         AsksService.getAsks().then(function(response){
@@ -37,6 +40,14 @@ angular.module('Asks',['Config'])
         }, function(errResponse){
             alert("Error Ask: "+errResponse);
         });
+        self.like = function(type,id){
+            AsksService.like(type,id).then(function(response){
+                alert('You have successfully voted. Reload the page to see the vote.');
+            }, function(errResponse){
+                if(errResponse.status == 403) alert('You cannot vote as you have already done it.');
+                else alert('You cannot vote:' + errResponse.data);
+            })
+        };
     }])
 
     .config(['$httpProvider', function($httpProvider){

@@ -5,7 +5,7 @@
             <div><em>Made by {{AskC.ask.User_id}} at {{AskC.ask.updated_at}}</em></div>
         </div>
         <div class="col-xs-3">
-            <a href="#" class="liker btn btn-primary btn-lg">Like it<span class="badge">{{AskC.ask.likes}}</span></a>
+            <a ng-click=AskC.like('asks',AskC.ask.id) href="#" class="liker btn btn-primary btn-lg">Like it<span class="badge">{{AskC.ask.likes}}</span></a>
         </div>
     </article>
     <div>
