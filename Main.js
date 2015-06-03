@@ -24,7 +24,22 @@ angular.module('Main',['ui.router', 'Stories', 'Asks'] ).config(
       $urlRouterProvider.otherwise("/stories")
       }
     )
-    .controller('MainCtrl', function(){
+    .factory('MainService',['$http', 'config', function ($http, config) {
+        return {
+            like: function (type,id) {
+                return $http.post(config.origin + '/' + type + '/' + id + '/votes', {});
+            }
+        };
+    }])
+    .controller('MainCtrl',['MainService', function(MainService){
         var self = this;
         self.link = "link bonito";
-    });
+        self.like = function(type, id){
+            MainService.like(type,id).then(function(response){
+                alert('You have successfully voted. Reload the page to see the vote.');
+            }, function(errResponse){
+                if(errResponse.status == 403) alert('You cannot vote as you have already done it.');
+                else alert('You cannot vote:' + errResponse.data);
+            })
+        };
+    }]);

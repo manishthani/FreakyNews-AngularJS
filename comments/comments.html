@@ -4,7 +4,7 @@
         <a href="#">Reply</a>
     </div>
     <div class="col-xs-3">
-        <a href="#" class="liker btn btn-primary btn-lg">Like it<span class="badge">{{comment.likes}}</span></a>
+        <button ng-click="Mc.like('comments',comment.id)" href="#" class="liker btn btn-primary btn-lg">Like it<span class="badge">{{comment.likes}}</span></button>
     </div>
 </div>
 <ul class="list-group-item" ng-if="comment.children.length > 0">
