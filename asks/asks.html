@@ -1,0 +1,7 @@
+<ul class="list-group" id="asks">
+    <li class="list-group-item" ng-repeat="ask in AsksC.asks" data-id="{{ask.id}}">
+        <a ui-sref="ask({id:{{ask.id}}})"><h4>{{ask.text}}</h4></a>
+        <a href="{{ask.link}}">{{ask.link}}</a>
+        <p>Made by user {{ask.User_id}}, {{ask.likes}} likes.</p>
+    </li>
+</ul>
