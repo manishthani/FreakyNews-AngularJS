@@ -1,7 +1,7 @@
 /**
  * Created by Xavier on 27/5/2015.
  */
-angular.module('Main',['ui.router', 'Stories', 'Asks', 'Comments'] ).config(
+angular.module('Main',['ui.router', 'Stories', 'Asks', 'Comments', 'Users'] ).config(
   function($urlRouterProvider,$stateProvider){
       $stateProvider.state('story',{
           url:'/stories/:id',
@@ -23,6 +23,10 @@ angular.module('Main',['ui.router', 'Stories', 'Asks', 'Comments'] ).config(
           url:'/comments/new?parent_id&Ask_id&Story_id',
           templateUrl:'comments/form.html',
           controller:'CommentsCtrl as CmntC'
+      }).state('users',{
+          url:'/users',
+          templateUrl:'users/users.html',
+          controller:'UsersCtrl as UsersC'
       })
 
       ;

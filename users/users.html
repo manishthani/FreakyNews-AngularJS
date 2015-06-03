@@ -1,0 +1,33 @@
+<ul class="list-group" id="stories">
+    <form class="form">
+        <div class="form-group">
+            <label for="uid">Username</label>
+            <input class="form-control" id="uid" type="text" ng-model="UsersC.username"/>
+        </div>
+        <div class="form-group">
+            <label for="text">Password</label>
+            <input class="form-control" type="text" id="text" ng-model="UsersC.password"/>
+        </div>
+        <div class="form-group">
+            <label for="text">Karma</label>
+            <input class="form-control" type="text" id="link" ng-model="UsersC.karma"/>
+        </div>
+        <div class="form-group">
+            <label for="text">About</label>
+            <input class="form-control" type="text" id="about" ng-model="UsersC.about"/>
+        </div>
+        <div class="form-group">
+            <label for="text">Email</label>
+            <input class="form-control" type="text" id="email" ng-model="UsersC.email"/>
+        </div>
+        <input class="btn btn-primary" type="submit" value="Enviar" ng-click="UsersC.post()">
+    </form>
+    <br> <br>
+    <li class="list-group-item" ng-repeat="user in UsersC.users">
+        <p>Username: {{user.username}}</p>
+        <p>Password: {{user.password}}</p>
+        <p>Karma: {{user.karma}}</p>
+        <p>About: {{user.about}}</p>
+        <p>Email: {{user.email}}</p>
+    </li>
+</ul>
