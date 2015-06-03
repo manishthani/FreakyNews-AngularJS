@@ -8,8 +8,13 @@ angular.module('Asks',['Config'])
             getAsk: function(id){
                 return $http.get(config.origin + '/asks/' + id);
             },
-            postAsk: function(text){
-                return $http.post(config.origin + '/asks/',text)
+            postAsk: function(user){
+                var data = {
+                    User_id: user.User_id,
+                    text: user.text
+                };
+
+                return $http.post(config.origin + '/asks/',data);
             }
         };
     }])
@@ -17,6 +22,10 @@ angular.module('Asks',['Config'])
         var self = this;
         AsksService.getAsks().then(function(response){
             self.asks = response.data;
+        }, function(errResponse){
+            alert("Error Asks:"+errResponse);
+        });
+        AsksService.postAsk(user).then(function(response){
         }, function(errResponse){
             alert("Error Asks:"+errResponse);
         });
@@ -30,14 +39,7 @@ angular.module('Asks',['Config'])
             alert("Error Ask: "+errResponse);
         });
     }])
-    .controller('AsksCtrl', ['AsksService', function(AsksService){
-        var self = this;
-        AsksService.postAsk({text: 'Soy un ask'}).then(function(response){
-            self.asks = response.data;
-        }, function(errResponse){
-            alert("Error Asks:"+errResponse);
-        });
-    }])
+
     .config(['$httpProvider', function($httpProvider){
         $httpProvider.defaults.headers.common['Content-Type'] = 'application/json'; //We send JSON by default
         $httpProvider.defaults.headers.common['Accept'] = 'application/json'; //We ask for JSON by default

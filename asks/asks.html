@@ -4,4 +4,14 @@
         <a href="{{ask.link}}">{{ask.link}}</a>
         <p>Made by user {{ask.User_id}}, {{ask.likes}} likes.</p>
     </li>
+
+    <form method="POST">
+        <input type="text" ng-model="user.User_id">
+        <br>
+        <input type="text" ng-model="user.text">
+        <br>
+        <input type="submit" value="Enviar" ng-click="AsksC.postAsk(user)">
+    </form>
+
+
 </ul>
