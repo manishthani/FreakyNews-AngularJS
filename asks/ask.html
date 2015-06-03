@@ -8,6 +8,15 @@
             <a href="#" class="liker btn btn-primary btn-lg">Like it<span class="badge">{{AskC.ask.likes}}</span></a>
         </div>
     </article>
+    <div>
+        <a  ui-sref="newComment(
+            {
+                parent_id:'',
+                Ask_id:(typeof(AskC) !== 'undefined'? AskC.ask.id : ''),
+                Story_id:(typeof(StoryC) !== 'undefined'? StoryC.story.id : '')
+            }
+        )">Add a comment</a>
+    </div>
     <ul class="list-group">
         <li class="list-group-item" ng-repeat="comment in AskC.ask.comments">
             <div id="hi" ng-include="AskC.commentsHtml"></div>
